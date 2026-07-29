@@ -1,0 +1,42 @@
+name: Mobile APK Builder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-sign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup APKtool
+        run: |
+          mkdir -p bin
+          curl -L https://github.com -o bin/apktool.jar
+          curl -L https://githubusercontent.com -o bin/apktool
+          chmod +x bin/apktool bin/apktool.jar
+          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
+
+      - name: Build APK
+        run: |
+          apktool b . -o unsigned.apk
+
+      - name: Sign APK
+        run: |
+          keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android,O=Android,C=US"
+          sudo apt-get update && sudo apt-get install -y apksigner
+          apksigner sign --ks debug.keystore --ks-pass pass:android --out final_app.apk unsigned.apk
+
+      - name: Save Finished APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: App-Download
+          path: final_app.apk
+          
