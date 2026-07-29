@@ -2,20 +2,28 @@ package com.example.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Light Palette
-val TealPrimary = Color(0xFF006A6A)
-val TealSecondary = Color(0xFF4A6363)
-val AmberWarning = Color(0xFFD97706)
-val AlertRed = Color(0xFFDC2626)
-val LightBackground = Color(0xFFF8FAFC)
-val LightSurface = Color(0xFFFFFFFF)
+// Elegant Dark Palette (Design System)
+val ElegantBackground = Color(0xFF1C1B1F)
+val ElegantSurface = Color(0xFF2B2930)
+val ElegantSurfaceVariant = Color(0xFF36343B)
+val ElegantBorder = Color(0xFF49454F)
 
-// Dark Palette
-val CyanDarkPrimary = Color(0xFF4DD0E1)
-val TealDarkSecondary = Color(0xFF80CBC4)
-val AmberDarkWarning = Color(0xFFFBBF24)
-val AlertDarkRed = Color(0xFFEF4444)
-val DarkBackground = Color(0xFF0F172A)
-val DarkSurface = Color(0xFF1E293B)
-val DarkSurfaceVariant = Color(0xFF334155)
+val ElegantPrimary = Color(0xFFD0BCFF)
+val ElegantOnPrimary = Color(0xFF381E72)
+val ElegantPrimaryContainer = Color(0xFF4F378B)
+val ElegantOnPrimaryContainer = Color(0xFFE8DEF8)
+
+val ElegantSecondary = Color(0xFFCCC2DC)
+val ElegantOnSecondary = Color(0xFF332D41)
+
+val ElegantText = Color(0xFFE6E1E5)
+val ElegantTextSecondary = Color(0xFFCAC4D0)
+
+val WarningAmber = Color(0xFFFFB74D)
+val AlertRed = Color(0xFFF2B8B5)
+val AlertRedContainer = Color(0xFF8C1D18)
+val AlertRedText = Color(0xFFF9DEDC)
+
+val SafeGreen = Color(0xFFA5D6A7)
+val SafeGreenContainer = Color(0xFF1D4ED8)
 

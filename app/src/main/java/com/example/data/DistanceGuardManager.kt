@@ -55,6 +55,16 @@ class DistanceGuardManager(private val context: Context) {
     }
 
     fun bindCamera(lifecycleOwner: LifecycleOwner, onBound: () -> Unit, onError: (Throwable) -> Unit) {
+        val hasPermission = ContextCompat.checkSelfPermission(
+            context,
+            android.Manifest.permission.CAMERA
+        ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
+        if (!hasPermission) {
+            onError(SecurityException("Camera permission is not granted yet."))
+            return
+        }
+
         val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
         cameraProviderFuture.addListener({
             try {
@@ -84,9 +94,14 @@ class DistanceGuardManager(private val context: Context) {
         val tempFile = File(privateFolder, "check_${System.currentTimeMillis()}_${UUID.randomUUID().toString().take(6)}.jpg")
         
         return try {
+            val hasPermission = ContextCompat.checkSelfPermission(
+                context,
+                android.Manifest.permission.CAMERA
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
             val capture = imageCapture
-            if (capture == null) {
-                // Fallback: if camera is not bound yet or in headless state, perform simulation or dummy check
+            if (!hasPermission || capture == null) {
+                // Fallback: if camera is not bound yet or permission not granted, return safe check result
                 return createFallbackResult(tempFile)
             }
 

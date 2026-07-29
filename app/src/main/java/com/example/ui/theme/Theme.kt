@@ -12,24 +12,26 @@ import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme =
   darkColorScheme(
-    primary = CyanDarkPrimary,
-    secondary = TealDarkSecondary,
-    tertiary = AmberDarkWarning,
-    error = AlertDarkRed,
-    background = DarkBackground,
-    surface = DarkSurface,
-    surfaceVariant = DarkSurfaceVariant
+    primary = ElegantPrimary,
+    onPrimary = ElegantOnPrimary,
+    primaryContainer = ElegantPrimaryContainer,
+    onPrimaryContainer = ElegantOnPrimaryContainer,
+    secondary = ElegantSecondary,
+    onSecondary = ElegantOnSecondary,
+    tertiary = WarningAmber,
+    error = AlertRed,
+    errorContainer = AlertRedContainer,
+    onErrorContainer = AlertRedText,
+    background = ElegantBackground,
+    surface = ElegantSurface,
+    surfaceVariant = ElegantSurfaceVariant,
+    outline = ElegantBorder,
+    onBackground = ElegantText,
+    onSurface = ElegantText,
+    onSurfaceVariant = ElegantTextSecondary
   )
 
-private val LightColorScheme =
-  lightColorScheme(
-    primary = TealPrimary,
-    secondary = TealSecondary,
-    tertiary = AmberWarning,
-    error = AlertRed,
-    background = LightBackground,
-    surface = LightSurface
-  )
+private val LightColorScheme = DarkColorScheme
 
 @Composable
 fun DistanceGuardTheme(
