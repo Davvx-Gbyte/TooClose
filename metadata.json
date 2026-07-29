@@ -1,0 +1,6 @@
+{
+  "name": "Screen Distance Guard",
+  "description": "On-device AI screen distance guardian that monitors face proximity and provides haptic feedback when you're too close.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
